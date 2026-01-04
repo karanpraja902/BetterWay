@@ -37,34 +37,44 @@ export const FilterBar = ({
                 {/* Category Filter */}
                 <div className="filter-group">
                     <label htmlFor="category" className="filter-label">Category</label>
-                    <select
-                        id="category"
-                        className="select"
-                        value={category}
-                        onChange={(e) => onCategoryChange(e.target.value)}
-                    >
-                        <option value="">All Categories</option>
-                        {categories.map(cat => (
-                            <option key={cat} value={cat}>
-                                {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                            </option>
-                        ))}
-                    </select>
+                    <div className="select-wrapper">
+                        <select
+                            id="category"
+                            className="select"
+                            value={category}
+                            onChange={(e) => onCategoryChange(e.target.value)}
+                        >
+                            <option value="">All Categories</option>
+                            {categories.map(cat => (
+                                <option key={cat} value={cat}>
+                                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                                </option>
+                            ))}
+                        </select>
+                        <svg className="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </div>
                 </div>
 
                 {/* Sort by Price */}
                 <div className="filter-group">
                     <label htmlFor="sort" className="filter-label">Sort by Price</label>
-                    <select
-                        id="sort"
-                        className="select"
-                        value={sortOrder}
-                        onChange={(e) => onSortChange(e.target.value)}
-                    >
-                        <option value="">Default</option>
-                        <option value="asc">Low → High</option>
-                        <option value="desc">High → Low</option>
-                    </select>
+                    <div className="select-wrapper">
+                        <select
+                            id="sort"
+                            className="select"
+                            value={sortOrder}
+                            onChange={(e) => onSortChange(e.target.value)}
+                        >
+                            <option value="">Default</option>
+                            <option value="asc">Low → High</option>
+                            <option value="desc">High → Low</option>
+                        </select>
+                        <svg className="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </div>
                 </div>
 
                 {/* Clear Filters */}
