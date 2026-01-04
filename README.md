@@ -1,16 +1,87 @@
-# React + Vite
+# ShopVibe 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean e-commerce UI I built to practice React fundamentals, state management, and component design.
 
-Currently, two official plugins are available:
+## What I Built
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a mini shopping app where you can browse products, search/filter them, and manage a shopping cart. Nothing fancy on the backend - it pulls products from a free API and stores your cart in the browser.
 
-## React Compiler
+### The Main Stuff
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Product Grid**
+- Shows 20 products from DummyJSON API
+- Each card has the product image, name, price, category, and stock count
+- Stock updates live when you add things to cart
 
-## Expanding the ESLint configuration
+**Search & Filters**
+- Type to search (with a small delay so it doesn't lag)
+- Pick a category from the dropdown
+- Sort by price (low to high or high to low)
+- One button to clear everything
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Shopping Cart**
+- Slides out from the side
+- Add stuff, remove stuff, change quantities
+- Can't add more than what's in stock
+- Stays saved even if you refresh the page
+
+## Running It Locally
+
+```bash
+# grab the code
+git clone https://github.com/karanpraja902/BetterWay.git
+cd BetterWay
+
+# install stuff
+npm install
+
+# start it up
+npm run dev
+```
+
+Then open http://localhost:5173
+
+## How It's Organized
+
+```
+src/
+├── components/
+│   ├── Header/         → top bar with cart button
+│   ├── ProductCard/    → individual product cards
+│   ├── ProductGrid/    → the grid of all products
+│   ├── Filters/        → search box and dropdowns
+│   └── Cart/           → the slide-out cart
+├── context/
+│   └── CartContext.jsx → where cart state lives
+├── hooks/
+│   ├── useProducts.js  → fetches products from API
+│   └── useDebounce.js  → delays search input
+├── App.jsx             → main component
+└── index.css           → all the styling
+```
+
+## Tech Used
+
+- React 18 with hooks
+- Vite for fast dev server
+- Context + useReducer for state
+- Plain CSS (no libraries)
+- localStorage for saving cart
+
+## Things I Focused On
+
+- Keeping components small and focused
+- Not re-rendering stuff unnecessarily (used React.memo)
+- Making filters work together properly
+- Handling edge cases (empty states, out of stock, etc.)
+- Clean, readable code
+
+## Notes
+
+Products come from: https://dummyjson.com/products
+
+Feel free to use this as a starting point or reference for your own projects.
+
+---
+
+Made while learning React ✌️
